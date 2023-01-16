@@ -19,11 +19,24 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final List<String> _textList = ["text1", "text2", "text3"];
+  final List<String> _textList = [
+    " I Can Do All Things Through Christ Who Strengthens me",
+    "So do not fear, for I am with you; do not be dismayed, for I am your God",
+    "For I, the LORD your God, hold your right hand; it is I who say to you, 'Fear not, I am the one who helps you.'",
+    "When I thought, My foot slips, Your steadfast love, O LORD, helped me up",
+    "He will wipe away every tear from their eyes",
+    "The Lord is good to all. - Psalm 145:9",
+    "The heavens declare the glory of God. - Psalm 19:1",
+    "Jesus Christ is the same yesterday, today and forever. - Hebrews 13:8",
+  ];
   final List<Color> _colorList = [
     Colors.white,
     Colors.amber,
-    Colors.greenAccent
+    Colors.greenAccent,
+    Colors.transparent,
+    Colors.green,
+    Colors.yellow,
+    Colors.blue,
   ];
   int _currentIndex = 0;
   int _colorIndex = 0;
@@ -42,45 +55,66 @@ class _HomepageState extends State<Homepage> {
 
     return MaterialApp(
         home: Scaffold(
+      floatingActionButton: Container(),
       resizeToAvoidBottomInset: true,
       body: Center(
           child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(color: Color(0XFFD21A33)),
+            decoration: BoxDecoration(
+                color: Colors.black, borderRadius: BorderRadius.circular(16)),
             width: 326,
             height: 58,
+            child: Center(
+                child: Text(
+              "Bible Verse Generator",
+              style: TextStyle(
+                  color: Colors.redAccent, fontWeight: FontWeight.bold),
+            )),
           ),
 
-          Stack(children: [
-            Container(
-              decoration: BoxDecoration(color: _colorList[_colorIndex]),
-              width: 326,
-              height: 500,
-              child: Center(
-                child: Text(_textList[_currentIndex],
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 50,
-                        color: _colorList[_currentIndex])),
-              ),
-            ),
-            Positioned(
-              bottom: 18,
-              right: 16,
-              child: FloatingActionButton(
-                onPressed: () {
-                  changeText();
-                  changeColor(); //RandomText
-                },
-                backgroundColor: _colorList[_colorIndex],
-                child: Text(
-                  "GIMME A QUOTE",
-                  style: TextStyle(color: Color(0xffD21A33)),
+          SingleChildScrollView(
+            child: Stack(children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: _colorList[_colorIndex],
+                    borderRadius: BorderRadius.circular(16)),
+                width: 326,
+                height: 500,
+                child: Center(
+                  child: Text(_textList[_currentIndex],
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                          color: Colors.black)),
                 ),
               ),
-            ),
-          ]),
+              Positioned(
+                bottom: 18,
+                right: 16,
+                child: Container(
+                  height: 30,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      changeText();
+                      changeColor(); //RandomText
+                    },
+                    backgroundColor: _colorList[_colorIndex],
+                    child: Text(
+                      "GIMME A QUOTE",
+                      style: TextStyle(
+                          color: Color(0xffD21A33),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          ),
           //Container(child: FloatingActionButton.small(onPressed: (() {})))
         ],
       )),
