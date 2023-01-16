@@ -30,7 +30,7 @@ class _HomepageState extends State<Homepage> {
     "Jesus Christ is the same yesterday, today and forever. - Hebrews 13:8",
   ];
   final List<Color> _colorList = [
-    Colors.white,
+    Colors.purpleAccent,
     Colors.amber,
     Colors.greenAccent,
     Colors.transparent,
@@ -60,55 +60,69 @@ class _HomepageState extends State<Homepage> {
       body: Center(
           child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.black, borderRadius: BorderRadius.circular(16)),
-            width: 326,
-            height: 58,
-            child: Center(
-                child: Text(
-              "Bible Verse Generator",
-              style: TextStyle(
-                  color: Colors.redAccent, fontWeight: FontWeight.bold),
-            )),
+          ClipRRect(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+              ),
+              width: 326,
+              height: 58,
+              child: Center(
+                  child: Text(
+                "Bible Verse Generator",
+                style: TextStyle(
+                    color: Colors.redAccent, fontWeight: FontWeight.bold),
+              )),
+            ),
           ),
 
           SingleChildScrollView(
             child: Stack(children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: _colorList[_colorIndex],
-                    borderRadius: BorderRadius.circular(16)),
-                width: 326,
-                height: 500,
-                child: Center(
-                  child: Text(_textList[_currentIndex],
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40,
-                          color: Colors.black)),
+              ClipRRect(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: _colorList[_colorIndex],
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      )),
+                  width: 326,
+                  height: 500,
+                  child: Center(
+                    child: Text(_textList[_currentIndex],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                            color: Colors.black)),
+                  ),
                 ),
               ),
               Positioned(
                 bottom: 18,
                 right: 16,
-                child: Container(
-                  height: 30,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      changeText();
-                      changeColor(); //RandomText
-                    },
-                    backgroundColor: _colorList[_colorIndex],
-                    child: Text(
-                      "GIMME A QUOTE",
-                      style: TextStyle(
-                          color: Color(0xffD21A33),
-                          fontWeight: FontWeight.bold),
+                child: ClipRRect(
+                  child: Container(
+                    height: 30,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 2),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        changeText();
+                        changeColor(); //RandomText
+                      },
+                      backgroundColor: _colorList[_colorIndex],
+                      child: Text(
+                        "GIMME A QUOTE",
+                        style: TextStyle(
+                            color: Color(0xffD21A33),
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
