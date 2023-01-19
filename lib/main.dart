@@ -98,7 +98,7 @@ class _HomepageState extends State<Homepage> {
                     child: Text(_textList[_currentIndex],
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 25,
+                            fontSize: 20,
                             fontFamily: 'Langar-Regular.ttf',
                             color: Colors.black)),
                   ),
