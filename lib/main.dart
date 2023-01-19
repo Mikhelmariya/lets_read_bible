@@ -99,7 +99,7 @@ class _HomepageState extends State<Homepage> {
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 25,
-                            fontFamily: 'Langar-Regular',
+                            fontFamily: 'Langar-Regular.ttf',
                             color: Colors.black)),
                   ),
                 ),
