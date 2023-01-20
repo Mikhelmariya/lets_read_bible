@@ -115,17 +115,19 @@ class _HomepageState extends State<Homepage> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2),
                       borderRadius: BorderRadius.circular(20)),
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      changeText();
-                      changeColor(); //RandomText
-                    },
-                    backgroundColor: _colorList[_colorIndex],
-                    child: Text(
-                      "GIMME A QUOTE",
-                      style: TextStyle(
-                          color: Color(0xffD21A33),
-                          fontWeight: FontWeight.bold),
+                  child: GestureDetector(
+                    onTap: (() {
+                      Text(_textList[_currentIndex]);
+                    }),
+                    child: Container(
+                      height: 20,
+                      width: 30,
+                      child: Text(
+                        "GIMME A QUOTE",
+                        style: TextStyle(
+                            color: Color(0xffD21A33),
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
