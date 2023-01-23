@@ -57,86 +57,64 @@ class _HomepageState extends State<Homepage> {
         home: Scaffold(
       floatingActionButton: Container(),
       resizeToAvoidBottomInset: true,
-      body: Center(
-          child: Column(
-        children: [
-          ClipRRect(
+      appBar: AppBar(
+        title: Text(
+          "Bible Verse Generator",
+          style:
+              TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+      ),
+      body: SizedBox.expand(
+        child: Stack(children: [
+          SizedBox.expand(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
+                  color: _colorList[_colorIndex],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  )),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 137, horizontal: 30),
+                child: SingleChildScrollView(
+                  child: Text(_textList[_currentIndex],
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          fontFamily: 'Langar',
+                          color: Colors.black)),
                 ),
               ),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Center(
-                  child: Text(
-                "Bible Verse Generator",
-                style: TextStyle(
-                    color: Colors.redAccent, fontWeight: FontWeight.bold),
-              )),
             ),
           ),
-
-          Stack(children: [
-            ClipRRect(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: _colorList[_colorIndex],
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16),
-                    )),
-                width: 326,
-                height: 500,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 137, horizontal: 30),
-                  child: SingleChildScrollView(
-                    child: Text(_textList[_currentIndex],
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            fontFamily: 'Langar',
-                            color: Colors.black)),
+          Positioned(
+            bottom: 18,
+            right: 16,
+            child: Container(
+              height: 30,
+              width: 150,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 2),
+                  borderRadius: BorderRadius.circular(20)),
+              child: GestureDetector(
+                onTap: (() {
+                  changeText();
+                }),
+                child: Center(
+                  child: Text(
+                    "GIMME A QUOTE",
+                    style: TextStyle(
+                        color: Color(0xffD21A33), fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
             ),
-            Positioned(
-              bottom: 18,
-              right: 16,
-              child: ClipRRect(
-                child: Container(
-                  height: 30,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: GestureDetector(
-                    onTap: (() {
-                      Text(_textList[_currentIndex]);
-                    }),
-                    child: Container(
-                      height: 20,
-                      width: 30,
-                      child: Text(
-                        "GIMME A QUOTE",
-                        style: TextStyle(
-                            color: Color(0xffD21A33),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ]),
-          //Container(child: FloatingActionButton.small(onPressed: (() {})))
-        ],
-      )),
+          ),
+        ]),
+      ),
       // backgroundColor: Color(0xFFFDF06F),
     ));
   }
