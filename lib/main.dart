@@ -69,8 +69,8 @@ class _HomepageState extends State<Homepage> {
                   topRight: Radius.circular(16),
                 ),
               ),
-              width: 326,
-              height: 58,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
               child: Center(
                   child: Text(
                 "Bible Verse Generator",
