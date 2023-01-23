@@ -120,7 +120,7 @@ class _HomepageState extends State<Homepage> {
                       Text(_textList[_currentIndex]);
                     }),
                     child: Container(
-                      height: 21,
+                      height: 20,
                       width: 30,
                       child: Text(
                         "GIMME A QUOTE",
